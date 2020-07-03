@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 import { ReactComponent as LoginImage } from '../../assets/img/login_img.svg';
 
@@ -43,9 +45,12 @@ const Login: React.FC = () => {
             <div className="text-center pt-12 pb-12">
               <p>
                 Não tem uma conta ?{' '}
-                <a href="register.html" className="underline font-semibold">
+                <Link
+                  to={{ pathname: '/signup' }}
+                  className="underline font-semibold"
+                >
                   Faça uma aqui.
-                </a>
+                </Link>
               </p>
             </div>
           </div>
