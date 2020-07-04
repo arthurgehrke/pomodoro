@@ -19,7 +19,7 @@ const SignUpContext = createContext<SignUpContextInterface>(
   {} as SignUpContextInterface,
 );
 
-const SignUpProvider: React.FC<Props> = () => {
+const SignUpProvider: React.FC<Props> = ({ children }: Props) => {
   const signUpUser = useCallback(async ({ name, email, password }) => {
     await api.post('signup', {
       name,
@@ -28,13 +28,18 @@ const SignUpProvider: React.FC<Props> = () => {
     });
   }, []);
 
-  return <SignUpContext.Provider value={{ signUpUser }} />;
+  return (
+    <SignUpContext.Provider value={{ signUpUser }}>
+      {children}
+    </SignUpContext.Provider>
+  );
 };
 
 function useSignUp(): SignUpContextInterface {
   const context = useContext(SignUpContext);
 
-  if (!context) throw new Error('useAuth must be used within an AuthProvider');
+  if (!context)
+    throw new Error('useSignUp must be used within an AuthProvider');
 
   return context;
 }
