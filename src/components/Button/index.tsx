@@ -8,7 +8,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
 };
 
-export const Button: React.FC<Props> = ({
+const Button: React.FC<Props> = ({
   children,
   expand,
   loading,
@@ -21,3 +21,5 @@ export const Button: React.FC<Props> = ({
     </button>
   );
 };
+
+export default Button;

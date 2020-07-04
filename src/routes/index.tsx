@@ -6,10 +6,13 @@ import SignUp from '../pages/SignUp';
 import Room from '../pages/Room';
 
 import { SignUpProvider } from '../context/SignUpContext';
+import { SignInProvider } from '../context/SignInContext';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route exact path="/" component={SignIn} />
+    <SignInProvider>
+      <Route exact path="/" component={SignIn} />
+    </SignInProvider>
     <SignUpProvider>
       <Route exact path="/signup" component={SignUp} />
     </SignUpProvider>

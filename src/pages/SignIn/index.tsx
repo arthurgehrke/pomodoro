@@ -1,11 +1,32 @@
 import React from 'react';
-
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+
+import { useSignIn } from '../../context/SignInContext';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { ReactComponent as LoginImage } from '../../assets/login_img.svg';
 
 const SignIn: React.FC = () => {
+  const { register, handleSubmit, errors } = useForm();
+
+  const { signIn } = useSignIn();
+
+  const onSubmit = async (data: any): Promise<void> => {
+    try {
+      const token = await signIn({
+        email: data.email,
+        password: data.password,
+      });
+
+      console.log(token);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="bg-white font-family-karla h-screen">
       <div className="w-full flex flex-wrap">
@@ -15,32 +36,46 @@ const SignIn: React.FC = () => {
           <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
             <Logo className="w-48 mx-auto mb-3 h-20" />
             <span className="mx-auto font-bold text-lg">PomoDone</span>
-            <form className="flex flex-col pt-3 md:pt-8">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col pt-3 md:pt-8"
+            >
               <div className="flex flex-col pt-4">
-                <label className="text-lg">Email</label>
-                <input
-                  type="email"
+                <label htmlFor="name" className="text-lg">
+                  Email
+                </label>
+                <Input
                   id="email"
-                  placeholder="Digite o seu melhor email aqui !"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  name="email"
+                  register={register}
+                  error={errors}
+                  placeholder="seu@email.com"
+                  inputClass="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
 
               <div className="flex flex-col pt-4">
-                <label className="text-lg">Senha</label>
-                <input
-                  type="password"
+                <label htmlFor="password" className="text-lg">
+                  Senha
+                </label>
+                <Input
                   id="password"
-                  placeholder="Escolha uma senha !"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                  type="password"
+                  name="password"
+                  register={register}
+                  error={errors}
+                  placeholder="sua senha"
+                  inputClass="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
-
-              <input
+              <Button
                 type="submit"
-                value="Começar a Estudar"
                 className="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
-              />
+                expand
+              >
+                Começar a Estudar
+              </Button>
             </form>
             <div className="text-center pt-12 pb-12">
               <p>

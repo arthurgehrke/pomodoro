@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import Input from '../../components/Input';
-import { Button } from '../../components/Button';
+import Button from '../../components/Button';
 
 import { useSignUp } from '../../context/SignUpContext';
 
