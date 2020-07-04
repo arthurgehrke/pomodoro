@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { useToast } from '../../context/ToastContext';
 import Input from '../../components/Input';
 import { Button } from '../../components/Button';
 
@@ -36,16 +39,18 @@ const schema = yup.object().shape({
 });
 
 const SignUp: React.FC = () => {
-  const { register, setValue, handleSubmit, reset, errors } = useForm();
-
-  const { addToast } = useToast();
+  const { register, handleSubmit, reset, errors } = useForm({
+    validationSchema: schema,
+  });
 
   const { signUpUser } = useSignUp();
 
   const onSubmit = async (data: any): Promise<void> => {
     try {
       console.log(data);
-      await signUpUser({ ...data });
+      await signUpUser(data);
+
+      reset({ defaultValues });
     } catch (err) {
       console.log(err);
     }
@@ -69,8 +74,8 @@ const SignUp: React.FC = () => {
                   Insira seu nome
                 </label>
                 <Input
-                  type="name"
-                  id="text"
+                  id="name"
+                  type="text"
                   name="name"
                   placeholder="seu nome"
                   error={errors}
@@ -80,14 +85,14 @@ const SignUp: React.FC = () => {
               </div>
 
               <div className="flex flex-col pt-4">
-                <label className="text-base mb-1">
+                <label htmlFor="email" className="text-base mb-1">
                   Escolha o seu melhor email
                 </label>
                 <Input
-                  type="email"
                   id="email"
-                  placeholder="seu@email.com"
+                  type="text"
                   name="email"
+                  placeholder="seu@email.com"
                   error={errors}
                   register={register}
                   inputClass="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
@@ -95,12 +100,14 @@ const SignUp: React.FC = () => {
               </div>
 
               <div className="flex flex-col pt-4">
-                <label className="text-base mb-1">Escolha uma senha</label>
+                <label htmlFor="password" className="text-base mb-1">
+                  Escolha uma senha
+                </label>
                 <Input
-                  type="password"
                   id="password"
-                  placeholder="sua senha"
+                  type="password"
                   name="password"
+                  placeholder="sua senha"
                   error={errors}
                   register={register}
                   inputClass="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"

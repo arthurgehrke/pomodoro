@@ -19,7 +19,7 @@ const SignUpContext = createContext<SignUpContextInterface>(
   {} as SignUpContextInterface,
 );
 
-const SignUpProvider: React.FC<Props> = ({ children }: Props) => {
+const SignUpProvider: React.FC<Props> = () => {
   const signUpUser = useCallback(async ({ name, email, password }) => {
     await api.post('signup', {
       name,
