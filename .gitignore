@@ -1,5 +1,3 @@
-yarn.lock
-
 # dependencies
 /.pnp
 .pnp.js
@@ -17,7 +15,10 @@ yarn.lock
 .env.test.local
 .env.production.local
 
+yarn.lock
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 node_modules
+src/tailwind.generated.css
+public/tailwind.generated.css
