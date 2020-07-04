@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as Logo } from '../../assets/img/logo.svg';
-import { ReactComponent as LoginImage } from '../../assets/img/login_img.svg';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as LoginImage } from '../../assets/login_img.svg';
 
-const Login: React.FC = () => {
+const SignIn: React.FC = () => {
   return (
     <div className="bg-white font-family-karla h-screen">
       <div className="w-full flex flex-wrap">
@@ -64,4 +64,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default SignIn;

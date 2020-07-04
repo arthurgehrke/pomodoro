@@ -9,8 +9,8 @@ import { Button } from '../../components/Button';
 
 import { useSignUp } from '../../context/SignUpContext';
 
-import { ReactComponent as Logo } from '../../assets/img/logo.svg';
-import { ReactComponent as LoginImage } from '../../assets/img/login_img.svg';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as LoginImage } from '../../assets/login_img.svg';
 
 const defaultValues = {
   name: '',
