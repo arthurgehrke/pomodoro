@@ -12,11 +12,9 @@ const Routes: React.FC = () => (
   <Switch>
     <SignInProvider>
       <Route exact path="/" component={SignIn} />
-    </SignInProvider>
-    <SignUpProvider>
       <Route exact path="/signup" component={SignUp} />
-    </SignUpProvider>
-    <Route exact path="/room" component={Room} />
+      <Route exact path="/room" component={Room} />
+    </SignInProvider>
   </Switch>
 );
 

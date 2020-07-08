@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -16,12 +16,11 @@ const SignIn: React.FC = () => {
 
   const onSubmit = async (data: any): Promise<void> => {
     try {
-      const token = await signIn({
+      console.log(data)
+      await signIn({
         email: data.email,
         password: data.password,
       });
-
-      console.log(token);
     } catch (err) {
       console.log(err);
     }
