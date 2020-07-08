@@ -49,7 +49,7 @@ const SignInProvider: React.FC<Props> = ({ children }: Props) => {
     });
 
     const { token } = response.data;
-
+    console.log(token);
     localStorage.setItem('@Pomodone:token', token);
 
     setData({ token, error: '' });

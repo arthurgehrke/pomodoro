@@ -16,7 +16,7 @@ const SignIn: React.FC = () => {
 
   const onSubmit = async (data: any): Promise<void> => {
     try {
-      console.log(data)
+      console.log(data);
       await signIn({
         email: data.email,
         password: data.password,
