@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
@@ -9,6 +9,8 @@ import GlobalDiv from '../components/GlobalDiv';
 import { SignUpProvider } from '../context/SignUpContext';
 import { SignInProvider } from '../context/SignInContext';
 
+import Route from './Route';
+
 const Routes: React.FC = () => (
   <Switch>
     <GlobalDiv>
@@ -16,9 +18,9 @@ const Routes: React.FC = () => (
         <Route exact path="/" component={SignIn} />
       </SignInProvider>
       <SignUpProvider>
-        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/signup" component={SignUp} requiresAuth={false} />
       </SignUpProvider>
-      <Route exact path="/room" component={Room} />
+      <Route exact path="/room" component={Room} requiresAuth />
     </GlobalDiv>
   </Switch>
 );
