@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
@@ -7,46 +8,27 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import { useSignIn } from '../context/SignInContext';
-
 interface RouteProps extends ReactRouterDomProps {
-  isNotFound?: boolean;
   requiresAuth?: boolean;
   component: React.ComponentType;
 }
 
 const Route: React.FC<RouteProps> = ({
-  isNotFound = false,
-  requiresAuth,
+  requiresAuth = false,
   component: Component,
   ...rest
 }: RouteProps) => {
-  const { signIn } = useSignIn();
-
   const token = localStorage.getItem('@Pomodone:token');
-  console.log(token);
 
   return (
     <ReactRouterDomRoute
       {...rest}
-      render={({ location }) => {
-        if (isNotFound) return <Component />;
-        if ({ requiresAuth: false }) return <Component />;
-        if ({ requiresAuth: true } && !token) {
-          return (
-            <Redirect
-              to={{
-                pathname: '/',
-                state: { from: location },
-              }}
-              push
-            />
-          );
+      render={() => {
+        if (requiresAuth && !token) {
+          return <Redirect to={{ pathname: '/' }} />;
         }
 
-        if ({ requiresAuth: true } && token) return <Component />;
-        
-        return false;
+        return <Component />;
       }}
     />
   );

@@ -18,7 +18,7 @@ const Routes: React.FC = () => (
         <Route exact path="/" component={SignIn} />
       </SignInProvider>
       <SignUpProvider>
-        <Route exact path="/signup" component={SignUp} requiresAuth={false} />
+        <Route exact path="/signup" component={SignUp} />
       </SignUpProvider>
       <Route exact path="/room" component={Room} requiresAuth />
     </GlobalDiv>
