@@ -120,6 +120,12 @@ const SignUp: React.FC = () => {
               >
                 Começar a Estudar
               </Button>
+              <Link
+                to={{ pathname: '/' }}
+                className="flex justify-center text-gray-800 hover:text-gray-600 mt-6"
+              >
+                Voltar
+              </Link>
             </form>
           </div>
         </div>
