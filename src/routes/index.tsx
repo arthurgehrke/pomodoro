@@ -3,6 +3,7 @@ import { Switch } from 'react-router-dom';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import Home from '../pages/Home';
 import Room from '../pages/Room';
 
 import GlobalDiv from '../components/GlobalDiv';
@@ -20,6 +21,7 @@ const Routes: React.FC = () => (
       <SignUpProvider>
         <Route exact path="/signup" component={SignUp} />
       </SignUpProvider>
+      <Route path="/home" component={Home} requiresAuth />
       <Route exact path="/room" component={Room} requiresAuth />
     </GlobalDiv>
   </Switch>

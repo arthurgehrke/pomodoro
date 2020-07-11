@@ -47,7 +47,6 @@ const SignUp: React.FC = () => {
 
   const onSubmit = async (data: any): Promise<void> => {
     try {
-      console.log(data);
       await signUpUser(data);
 
       reset({ defaultValues });
