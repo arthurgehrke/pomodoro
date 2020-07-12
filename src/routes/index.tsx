@@ -22,7 +22,7 @@ const Routes: React.FC = () => (
         <Route exact path="/signup" component={SignUp} />
       </SignUpProvider>
       <Route path="/home" component={Home} requiresAuth />
-      <Route exact path="/room" component={Room} requiresAuth />
+      <Route path="/room" component={Room} requiresAuth />
     </GlobalDiv>
   </Switch>
 );
